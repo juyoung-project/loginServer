@@ -12,7 +12,7 @@ public class InitController {
 	@RequestMapping(value = "/health/check")
 	@ResponseBody
 	public ResponsePojo healthCheck() {
-		System.out.println("sayHellow111");
+		System.out.println("sayHellow1111");
 		return ResponsePojo.success(null, "sayhellow");
 	}
 	
