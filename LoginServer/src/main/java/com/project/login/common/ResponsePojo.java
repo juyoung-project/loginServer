@@ -1,31 +1,31 @@
 package com.project.login.common;
 
-import java.util.Map;
+import lombok.Getter;
+import lombok.Setter;
 
-public class ResponsePojo {
+@Getter
+@Setter
+public class ResponsePojo<T> {
 	
-	private Map<String, Object> data;
+	private T data;
 	private String msg;
 	private Code code;
 	
-	public static ResponsePojo success(Map<String, Object> data, String msg) {
-		return buildMessage(Code.SUCCESS, data, msg);
+	public static <T> ResponsePojo<T> success(T data, String msg) {
+		return createResponse(Code.SUCCESS, data, msg);
 	}
 	
-	public static ResponsePojo error(Map<String, Object> data, String msg) {
-		return buildMessage(Code.ERROR, data, msg);
+	public static <T> ResponsePojo<T> error(T data, String msg) {
+		return createResponse(Code.ERROR, data, msg);
 	}
-	private static ResponsePojo buildMessage(Code code, Map<String, Object> data, String msg) {
-		ResponsePojo res = new ResponsePojo(code, data, msg);
-		return res;
+	private static <T> ResponsePojo<T> createResponse(Code code, T data, String msg) {
+		return new ResponsePojo<T>(code, data, msg);
 	}
 	
-	private ResponsePojo(Code code, Map<String, Object> data, String msg) {
+	private ResponsePojo(Code code, T data, String msg) {
 		this.code = code;
 		this.data = data;
 		this.msg = msg;
 	}
-	
-	
-	
+
 }

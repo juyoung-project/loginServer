@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회원가입 폼</title>
+     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+<body>
+    <div class="signup-container">
+        <h2>회원가입</h2>
+        <form id="signupForm">
+            <label for="email">이메일:</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="name">이름:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="password">비밀번호:</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button id="signUp">가입하기</button>
+        </form>
+    </div>
+    
+</body>
+</html>
+<script>
+$("#signUp").click(function() {
+	event.preventDefault();  // 폼 제출 방지
+	var data = {"email" : $("#email").val(), "name" :  $("#name").val(), "password" : $("#password").val()};
+	$.ajax({
+		    url: '/sign-up',
+		    method: 'POST',
+		    data : JSON.stringify(data),
+		    dataType : 'json',
+		    contentType : 'application/json',
+		    processData: false,  
+		    success: function (data, status, xhr) {
+		        console.log("data : : " + JSON.stringify(data));
+		    },
+		    error: function (data, status, err) {
+		    }
+		});
+})
+
+
+</script>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.signup-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+    text-align: center;
+}
+
+h2 {
+    margin-bottom: 20px;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    text-align: left;
+}
+
+input[type="email"],
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #28a745;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #218838;
+}
+
+</style>

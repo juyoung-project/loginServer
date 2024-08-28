@@ -1,1 +1,112 @@
-hellow
+<!DOCTYPE html>
+<html>
+<head>
+	 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <title>join_form.html</title>
+    <h3>회원 가입 양식</h3>
+    <style type = 'text/css'>
+    textarea {
+        vertical-align : middle;
+    }
+    </style>
+</head>
+<body>
+    <form >     
+        <table >
+            <tr>
+                <td>- 아이디 <input type = "text" name = "id"   style="margin-left:50px"></td>
+            </tr>    
+            <tr>
+                <td>- 비밀번호 <input type = "text" name = "password" style="margin-left:35px"></td>
+            </tr>
+            <tr>
+                <td>- 이름<input type = "text" name = "name" style="margin-left:73px"></td>
+            </tr>
+            <button id="aaa">ttt</button id="aaa">
+            <button id="qqq">qqqq</button id="qqq">
+           	<button id="www">wwww</button id="www">
+           	<button id="eee">eee</button id="eee">
+        </table>
+    </form>
+</body>
+</html>
+<script>
+
+$("#aaa").click(function() {
+	var a = {"id" : "111", "name" : "name", "password" : "23412412"};
+	
+	$.ajax({
+	    url: '/sign-up',
+	    method: 'post',
+	    data : JSON.stringify(a),
+	    dataType : 'json',
+	    contentType : 'application/json',
+	    success: function (data, status, xhr) {
+	        console.log("data : : " + JSON.stringify(data));
+	    },
+	    error: function (data, status, err) {
+		}
+	});
+})
+
+
+$("#qqq").click(function() {
+	var a = {"email" : "test@test.com",  "password" : "23412412"};
+	
+	$.ajax({
+	    url: '/sign-in',
+	    method: 'post',
+	    data : JSON.stringify(a),
+	    dataType : 'json',
+	    contentType : 'application/json',
+	    success: function (data, status, xhr) {
+	        console.log("data : : " + JSON.stringify(data));
+	    },
+	    error: function (data, status, err) {
+	    }
+	});
+})
+
+
+$("#www").click(function() {
+	var a = {"email" : "test@test.com",  "password" : "23412412"};
+	
+	$.ajax({
+	    url: '/api/test',
+	    method: 'post',
+	    headers: {
+        	"Authorization": "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6Ik5PUk1BTCIsImV4cCI6MTcyMzcwMzc0MiwiaWF0IjoxNzIzNzAwMTQyfQ.6a2ygPxcgmanv4m-ucAr7IaXH6Otw07CA8RCOUyWp4oJmheAnHfDc3YM8CMgHGeB47B9v-I3mQRf4eee-ZfFAQ"  // JWT 토큰을 Bearer로 설정
+    	},
+	    data : JSON.stringify(a),
+	    dataType : 'json',
+	    contentType : 'application/json',
+	    success: function (data, status, xhr) {
+	        console.log("data : : " + JSON.stringify(data));
+	    },
+	    error: function (data, status, err) {
+	    }
+	});
+})
+
+$("#eee").click(function() {
+	var a = {"email" : "test@test.com",  "password" : "23412412"};
+	
+	$.ajax({
+	    url: '/api/test2',
+	    method: 'post',
+	    headers: {
+        	"Authorization": "Bearer .eyJzdWIiOiJ0ZXN0QHRlc3QuY29tIiwicm9sZSI6Ik5PUk1BTCIsImV4cCI6MTcyMzY0MDE0MiwiaWF0IjoxNzIzNjM2NTQyfQ.UR_uht-q6b7dxzVMs_6YpRAvgGWeDuFzrXWz1zoIwqB_0ebGAHN89d-jBmwjev0TrlAtX6g9rPmeWafe7Jr0fg"  // JWT 토큰을 Bearer로 설정
+    	},
+	    data : JSON.stringify(a),
+	    dataType : 'json',
+	    contentType : 'application/json',
+	    success: function (data, status, xhr) {
+	        console.log("data : : " + JSON.stringify(data));
+	    },
+	    error: function (data, status, err) {
+	    }
+	});
+})
+
+
+</script>
